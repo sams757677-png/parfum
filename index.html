@@ -102,6 +102,78 @@ h1 {
     from {opacity: 0; transform: translateY(20px);}
     to {opacity: 1; transform: translateY(0);}
 }
+
+.social-block {
+    margin: 40px auto;
+    padding: 25px;
+    max-width: 600px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(212,175,55,0.2);
+    border-radius: 20px;
+    backdrop-filter: blur(12px);
+    text-align: center;
+}
+
+.social-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    margin-bottom: 15px;
+    letter-spacing: 1px;
+    color: #d4af37;
+}
+
+.social-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+}
+
+.social-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 14px;
+    border-radius: 12px;
+    text-decoration: none;
+    color: white;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    transition: 0.3s;
+    font-size: 14px;
+}
+
+.social-btn:hover {
+    transform: translateY(-3px);
+    border-color: #d4af37;
+    box-shadow: 0 0 15px rgba(212,175,55,0.2);
+}
+
+.social-btn i {
+    font-size: 16px;
+    color: #d4af37;
+}
+
+/* MAX иконка */
+.max-icon {
+    width: 18px;
+    height: 18px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: #d4af37;
+    color: black;
+    font-weight: bold;
+    border-radius: 4px;
+    font-size: 11px;
+}
+
+@media (max-width: 600px) {
+    .social-buttons {
+        flex-direction: column;
+    }
+}
+
 </style>
 
 </head>
@@ -123,13 +195,60 @@ h1 {
             +7(931)-300-35-55
             </a>
         </div>
+		
+	
+
+	
+		<div class="social-block">
+
+   
+    <div class="social-buttons">
+
+        <a href="./katalog_parfum.html" class="social-btn">
+            <i class="fa-brands fa-empire"></i>
+            Каталог ароматов
+        </a>
+      
+
+    </div>
+
+</div>
 
 
-        <a href="https://t.me/yourusername" class="btn">💙 Telegram</a>
-        <a href="https://web.max.ru/XR" class="btn">🔥 Макс</a>
-        <a href="https://wa.me/41790000000" class="btn">💬 WhatsApp</a>
+<div class="social-block">
 
-        <a href="./katalog_parfum.html" class="btn">📦 Каталог ароматов</a>
+    <div class="social-title">
+        Follow & Contact
+    </div>
+
+    <div class="social-buttons">
+
+        <a href="https://wa.me/41790000000" class="social-btn">
+            <i class="fa-brands fa-whatsapp"></i>
+            WhatsApp
+        </a>
+
+        <a href="https://t.me/yourusername" class="social-btn">
+            <i class="fa-brands fa-telegram"></i>
+            Telegram
+        </a>
+
+        <a href="https://instagram.com/yourusername" class="social-btn">
+            <i class="fa-brands fa-instagram"></i>
+            Instagram
+        </a>
+
+        <a href="https://max.com/yourprofile" class="social-btn">
+            <span class="max-icon">M</span>
+            MAX
+        </a>
+
+    </div>
+
+</div>
+
+
+     
        
 
     </div>
