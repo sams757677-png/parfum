@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RAM PERFUME</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Montserrat&display=swap" rel="stylesheet">
+
+<style>
+body {
+    margin: 0;
+    background: #000;
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* HERO */
+.hero {
+    text-align: center;
+    padding: 40px 20px;
+}
+.hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+}
+.hero p {
+    opacity: 0.7;
+}
+.cta {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 12px 20px;
+    background: gold;
+    color: black;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* FILTER */
+.filter {
+    text-align: center;
+    margin: 20px;
+}
+.filter button {
+    border: 1px solid gold;
+    background: transparent;
+    color: gold;
+    padding: 8px 14px;
+    margin: 5px;
+    border-radius: 20px;
+}
+
+/* GRID */
+.catalog {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    padding: 15px;
+}
+
+/* CARD */
+.card-wrapper { position: relative; }
+
+.badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: gold;
+    color: black;
+    padding: 4px 8px;
+    border-radius: 8px;
+    font-size: 12px;
+}
+
+.card {
+    background: rgba(255,255,255,0.05);
+    border-radius: 15px;
+    overflow: hidden;
+}
+.card img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+}
+.card-body {
+    padding: 12px;
+}
+.tag { color: gold; font-size: 12px; }
+.desc { font-size: 13px; opacity: 0.7; margin: 5px 0; }
+.price { font-weight: bold; color: gold; }
+
+.buy {
+    display: block;
+    margin-top: 8px;
+    padding: 10px;
+    border-radius: 10px;
+    text-align: center;
+    background: linear-gradient(45deg, gold, #ffd700);
+    color: black;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* TRUST */
+.trust {
+    text-align: center;
+    padding: 20px;
+    font-size: 14px;
+    opacity: 0.8;
+}
+</style>
+</head>
+
+<body>
+
+<!-- ВИЗИТКА -->
+<div class="hero">
+    <h1>RAM PERFUME</h1>
+    <p>Нишевые ароматы • Стойкость до 24 часов</p>
+
+    <a href="https://wa.me/41790000000?text=Привет, хочу подобрать аромат" class="cta">
+        💬 Написать в WhatsApp
+    </a>
+</div>
+
+<!-- ФИЛЬТР -->
+<div class="filter">
+    <button onclick="filter('all')">Все</button>
+    <button onclick="filter('men')">Мужские</button>
+    <button onclick="filter('women')">Женские</button>
+    <button onclick="filter('unisex')">Унисекс</button>
+</div>
+
+<!-- КАТАЛОГ -->
+<div class="catalog">
+
+    <!-- Baccarat -->
+    <div class="card-wrapper" data-type="unisex">
+        <div class="badge">🔥 ХИТ</div>
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1585386959984-a4155224a1ad">
+            <div class="card-body">
+                <h3>Baccarat Rouge 540</h3>
+                <div class="tag">Сладкий • Шлейф</div>
+                <div class="desc">Максимально стойкий, собирает комплименты</div>
+                <div class="price">10 мл — 30 CHF</div>
+                <a href="https://wa.me/41790000000?text=Хочу Baccarat Rouge 540" class="buy">Заказать</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sauvage -->
+    <div class="card-wrapper" data-type="men">
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1615634262417-10a9c1d2c6b5">
+            <div class="card-body">
+                <h3>Sauvage</h3>
+                <div class="tag">Свежий • Мужской</div>
+                <div class="desc">Универсальный и популярный аромат</div>
+                <div class="price">10 мл — 25 CHF</div>
+                <a href="https://wa.me/41790000000?text=Хочу Sauvage" class="buy">Заказать</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tygar -->
+    <div class="card-wrapper" data-type="men">
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1592945403244-b3fbafd7f539">
+            <div class="card-body">
+                <h3>Bvlgari Tygar</h3>
+                <div class="tag">Цитрус • Люкс</div>
+                <div class="desc">Очень дорогой свежий аромат</div>
+                <div class="price">10 мл — 35 CHF</div>
+                <a href="https://wa.me/41790000000?text=Хочу Tygar" class="buy">Заказать</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Amber Wood -->
+    <div class="card-wrapper" data-type="unisex">
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1594035910387-fea47794261f">
+            <div class="card-body">
+                <h3>Ajmal Amber Wood</h3>
+                <div class="tag">Амбра • Восток</div>
+                <div class="desc">Тёплый, сладкий, стойкий</div>
+                <div class="price">10 мл — 25 CHF</div>
+                <a href="https://wa.me/41790000000?text=Хочу Amber Wood" class="buy">Заказать</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bombshell -->
+    <div class="card-wrapper" data-type="women">
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1600180758890-6b94519a8ba3">
+            <div class="card-body">
+                <h3>Bombshell</h3>
+                <div class="tag">Свежий • Женский</div>
+                <div class="desc">Лёгкий и популярный аромат</div>
+                <div class="price">10 мл — 20 CHF</div>
+                <a href="https://wa.me/41790000000?text=Хочу Bombshell" class="buy">Заказать</a>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!-- ДОВЕРИЕ -->
+<div class="trust">
+    ✔ Более 500 клиентов <br>
+    ✔ Доставка по Швейцарии 🇨🇭 <br>
+    ✔ Оплата при получении
+</div>
+
+<script>
+function filter(type) {
+    let items = document.querySelectorAll('.card-wrapper');
+    items.forEach(item => {
+        item.style.display =
+        (type === 'all' || item.dataset.type === type) ? 'block' : 'none';
+    });
+}
+</script>
+
+</body>
+</html>
