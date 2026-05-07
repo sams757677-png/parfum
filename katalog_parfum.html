@@ -9,7 +9,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   
-  <style>
+ <style>
     * {
       margin: 0;
       padding: 0;
@@ -24,7 +24,6 @@
       scroll-behavior: smooth;
     }
 
-    /* Custom scrollbar */
     ::-webkit-scrollbar {
       width: 8px;
     }
@@ -71,7 +70,6 @@
       font-size: 1rem;
       transition: all 0.3s ease;
       box-shadow: 0 8px 20px rgba(212, 175, 55, 0.3);
-      border: none;
     }
     .cta i {
       font-size: 1.3rem;
@@ -127,16 +125,8 @@
       margin: 0 auto;
     }
 
-    /* Card Animation */
     .card-wrapper {
       transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-      opacity: 1;
-      transform: scale(1);
-    }
-    .card-wrapper.hide {
-      display: none;
-      opacity: 0;
-      transform: scale(0.96);
     }
 
     .card {
@@ -158,20 +148,27 @@
       background: rgba(30, 30, 40, 0.8);
     }
 
+    /* Блок изображения: белый фон, полное отображение без обрезки */
     .card-img {
-      position: relative;
+      background: #ffffff;  /* ← белый фон для пустых областей */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      aspect-ratio: 4 / 3;   /* фиксированная область для ровных карточек */
       overflow: hidden;
-      height: 220px;
     }
     .card-img img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.5s;
+      max-width: 100%;
+      max-height: 100%;
+      width: auto;
+      height: auto;
+      object-fit: contain;   /* сохраняем пропорции, ничего не обрезаем */
+      transition: transform 0.4s ease;
     }
     .card:hover .card-img img {
-      transform: scale(1.04);
+      transform: scale(1.02);
     }
+
     .badge {
       position: absolute;
       top: 14px;
@@ -185,6 +182,7 @@
       z-index: 2;
       box-shadow: 0 3px 8px rgba(0,0,0,0.2);
     }
+
     .card-body {
       padding: 20px 18px 22px;
       flex: 1;
