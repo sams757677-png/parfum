@@ -348,13 +348,9 @@
 <div class="hero">
   <h1>RAM PERFUME</h1>
   <p>Нишевые ароматы класса люкс • Стойкость до 24 часов</p>
-
-<a href="https://t.me/xp_xrp" class="cta">
-    <i class="fab fa-telegram"></i>
-    Написать в Telegram
-</a>  
-
-
+  <a href="https://wa.me/+79991979994?text=Здравствуйте!%20Хочу%20подобрать%20аромат" class="cta">
+    <i class="fab fa-whatsapp"></i> Написать в WhatsApp
+  </a>
 </div>
 
 <div class="filter-bar">
@@ -544,8 +540,7 @@
     let html = '';
     filtered.forEach(perf => {
       const badgeHtml = perf.badge ? `<div class="badge">${perf.badge}</div>` : '';
-      //const waLink = `https://wa.me/41790000000?text=${encodeURIComponent(perf.waMsg + ' — RAM PERFUME')}`;
-      const tgLink = `https://t.me/xp_xrp`;
+      const waLink = `https://wa.me/+79991979994?text=${encodeURIComponent(perf.waMsg + ' — RAM PERFUME')}`;
       html += `
         <div class="card-wrapper" data-type="${perf.type}">
           <div class="card">
@@ -561,7 +556,7 @@
               <div class="price">${perf.price} <small>/${perf.volume}</small></div>
               <div class="price1">${perf.price1} <small>/${perf.volume1}</small></div>
               <a href="${waLink}" class="buy-btn" target="_blank" rel="noopener noreferrer">
-                <i class="fab fa-telegram"></i> Заказать
+                <i class="fab fa-whatsapp"></i> Заказать
               </a>
             </div>
           </div>
