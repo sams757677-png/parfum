@@ -276,6 +276,18 @@ function openTelegram(username) {
 }
 </script>
 
+<script>
+function openApp(appUrl, webUrl) {
+    const timeout = setTimeout(() => {
+        window.location.href = webUrl;
+    }, 1200);
+
+    window.location.href = appUrl;
+
+    window.onblur = () => clearTimeout(timeout);
+}
+</script>	
+
 
 </body>
 </html>
