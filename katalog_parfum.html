@@ -348,7 +348,9 @@
 <div class="hero">
   <h1>RAM PERFUME</h1>
   <p>Нишевые ароматы класса люкс • Стойкость до 24 часов</p>
-  <a href="https://t.me/XP?text=Здравствуйте!%20Хочу%20подобрать%20аромат" class="cta">
+
+  <a href="#" onclick=" openApp('tg://resolve?domain=yourusername','https://t.me/yourusername')"><i class="fa-brands fa-telegram"></i>Здравствуйте!%20Хочу%20подобрать%20аромат</a>
+  
   <i class="fab fa-telegram"></i> Написать в Телеграмм
   </a>
 </div>
@@ -625,5 +627,20 @@
     }
   });
 </script>
+
+<script>
+function openApp(appUrl, webUrl) {
+
+const timeout = setTimeout(() => {
+    window.location.href = webUrl;
+}, 1200);
+
+window.location.href = appUrl;
+
+window.onblur = () => clearTimeout(timeout);
+
+}
+</script>
+  
 </body>
 </html>
