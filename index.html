@@ -223,7 +223,8 @@ h1 {
 
     <div class="social-buttons">
 
-			<a href="#" onclick="openApp('tg://resolve?domain=#6346234765','https://t.me/#6346234765')" class="social-btn">
+			
+			<a href="#" onclick="openTelegram('iliasrus')" class="social-btn">
 			<i class="fa-brands fa-telegram"></i>
 				Telegram
 			</a>
@@ -263,14 +264,15 @@ h1 {
 
 
 <script>
-function openApp(appUrl, webUrl) {
-    const timeout = setTimeout(() => {
-        window.location.href = webUrl;
+function openTelegram(username) {
+    const app = `tg://resolve?domain=${username}`;
+    const web = `https://t.me/${username}`;
+
+    window.location.href = app;
+
+    setTimeout(() => {
+        window.open(web, "_blank");
     }, 1200);
-
-    window.location.href = appUrl;
-
-    window.onblur = () => clearTimeout(timeout);
 }
 </script>
 
