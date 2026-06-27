@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>PERFUME | Нишевые ароматы</title>
+  
+  <!-- Google Fonts & Font Awesome -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: radial-gradient(circle at 10% 20%, #0a0a0a, #000000);
+      color: #f5f5f5;
+      font-family: 'Montserrat', sans-serif;
+      line-height: 1.5;
+      scroll-behavior: smooth;
+    }
+
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #1a1a1a;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #d4af37;
+      border-radius: 10px;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 60px 20px 50px;
+      background: linear-gradient(135deg, rgba(0,0,0,0.85), rgba(0,0,0,0.95));
+      border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.4rem, 8vw, 4.2rem);
+      letter-spacing: 2px;
+      background: linear-gradient(135deg, #fff, #d4af37);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 12px;
+    }
+    .hero p {
+      font-size: 1.1rem;
+      opacity: 0.85;
+      margin-bottom: 28px;
+    }
+    .cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: linear-gradient(95deg, #d4af37, #f5e27b);
+      color: #0a0a0a;
+      padding: 14px 28px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+      box-shadow: 0 8px 20px rgba(212, 175, 55, 0.3);
+    }
+    .cta i {
+      font-size: 1.3rem;
+    }
+    .cta:hover {
+      transform: scale(1.02);
+      background: linear-gradient(95deg, #e6c24a, #ffe28a);
+      box-shadow: 0 12px 26px rgba(212, 175, 55, 0.5);
+    }
+
+    .filter-bar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+      margin: 40px 20px 20px;
+    }
+    .filter-btn {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(212, 175, 55, 0.5);
+      color: #e0e0e0;
+      padding: 10px 24px;
+      border-radius: 40px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.25s;
+      backdrop-filter: blur(4px);
+    }
+    .filter-btn i {
+      margin-right: 8px;
+    }
+    .filter-btn.active {
+      background: #d4af37;
+      color: #000;
+      border-color: #d4af37;
+      box-shadow: 0 0 12px rgba(212, 175, 55, 0.5);
+    }
+    .filter-btn:hover:not(.active) {
+      background: rgba(212, 175, 55, 0.2);
+      border-color: #d4af37;
+      color: #fff;
+    }
+
+    .search-sort-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 16px;
+      margin: 10px 20px 20px;
+    }
+    .search-wrapper {
+      flex: 1;
+      min-width: 240px;
+    }
+    .search-box {
+      position: relative;
+      width: 100%;
+      max-width: 420px;
+      margin: 0 auto;
+    }
+    .search-box i {
+      position: absolute;
+      left: 18px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #d4af37;
+      font-size: 1rem;
+      pointer-events: none;
+      opacity: 0.8;
+    }
+    .search-box input {
+      width: 100%;
+      background: rgba(20, 20, 30, 0.8);
+      border: 1px solid rgba(212, 175, 55, 0.4);
+      border-radius: 60px;
+      padding: 12px 20px 12px 48px;
+      font-size: 0.95rem;
+      color: #f5f5f5;
+      font-family: 'Montserrat', sans-serif;
+      transition: all 0.25s;
+      outline: none;
+    }
+    .search-box input:focus {
+      border-color: #d4af37;
+      background: rgba(30, 30, 40, 0.95);
+      box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.2);
+    }
+    .search-box input::placeholder {
+      color: #aaa;
+      font-weight: 400;
+    }
+    .search-clear {
+      position: absolute;
+      right: 18px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      color: #aaa;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: color 0.2s;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .search-clear:hover {
+      color: #d4af37;
+    }
+
+    .sort-btn {
+      background: rgba(20, 20, 30, 0.8);
+      border: 1px solid rgba(212, 175, 55, 0.5);
+      border-radius: 60px;
+      padding: 11px 24px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #e0e0e0;
+      cursor: pointer;
+      transition: all 0.25s;
+      backdrop-filter: blur(4px);
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      white-space: nowrap;
+    }
+    .sort-btn i {
+      color: #d4af37;
+      font-size: 1rem;
+    }
+    .sort-btn.active {
+      background: #d4af37;
+      color: #000;
+      border-color: #d4af37;
+    }
+    .sort-btn.active i {
+      color: #000;
+    }
+    .sort-btn:hover:not(.active) {
+      background: rgba(212, 175, 55, 0.2);
+      border-color: #d4af37;
+    }
+
+    .catalog {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 28px;
+      padding: 20px 30px 50px;
+      max-width: 1500px;
+      margin: 0 auto;
+    }
+
+    .card-wrapper {
+      transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+    }
+
+    .card {
+      background: rgba(20, 20, 30, 0.65);
+      backdrop-filter: blur(2px);
+      border-radius: 28px;
+      overflow: hidden;
+      border: 1px solid rgba(212, 175, 55, 0.25);
+      transition: all 0.35s ease;
+      box-shadow: 0 12px 28px -10px rgba(0,0,0,0.5);
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+    .card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(212, 175, 55, 0.7);
+      box-shadow: 0 24px 36px -12px rgba(0,0,0,0.6);
+      background: rgba(30, 30, 40, 0.8);
+    }
+
+    .card-img {
+      background: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      aspect-ratio: 4 / 3;
+      overflow: hidden;
+      position: relative;
+      cursor: pointer;
+    }
+    .card-img img {
+      max-width: 100%;
+      max-height: 100%;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      transition: transform 0.4s ease;
+    }
+    .card:hover .card-img img {
+      transform: scale(1.02);
+    }
+
+    .badge {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      background: linear-gradient(120deg, #d4af37, #e6c864);
+      color: #0a0a0a;
+      padding: 6px 14px;
+      border-radius: 60px;
+      font-size: 0.75rem;
+      font-weight: 800;
+      z-index: 2;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+    }
+
+    .card-body {
+      padding: 20px 18px 22px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    .card-title {
+      font-size: 1.35rem;
+      font-weight: 700;
+      font-family: 'Playfair Display', serif;
+      margin-bottom: 6px;
+      letter-spacing: -0.2px;
+    }
+    .tag {
+      color: #d4af37;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .tag i {
+      font-size: 0.7rem;
+    }
+    .desc {
+      font-size: 0.85rem;
+      opacity: 0.75;
+      margin-bottom: 16px;
+      line-height: 1.4;
+    }
+    .price, .price1, .price2 {
+      font-weight: 700;
+      font-size: 1.2rem;
+      color: #f5e27b;
+      margin: 6px 0;
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+    .price small, .price1 small, .price2 small {
+      font-size: 0.7rem;
+      font-weight: 400;
+      opacity: 0.7;
+    }
+    .gender-type {
+      background: rgba(212, 175, 55, 0.15);
+      border-left: 3px solid #d4af37;
+      padding: 6px 12px;
+      border-radius: 30px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin: 10px 0 8px;
+      display: inline-block;
+      width: fit-content;
+      color: #f5e27b;
+    }
+    .buy-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background: rgba(212, 175, 55, 0.12);
+      border: 1px solid rgba(212, 175, 55, 0.5);
+      padding: 12px 0;
+      border-radius: 40px;
+      text-decoration: none;
+      color: #f5e27b;
+      font-weight: 600;
+      margin-top: auto;
+      transition: 0.25s;
+    }
+    .buy-btn i {
+      font-size: 1rem;
+    }
+    .buy-btn:hover {
+      background: #d4af37;
+      color: #0a0a0a;
+      border-color: #d4af37;
+    }
+
+    .trust-section {
+      background: rgba(0,0,0,0.6);
+      border-top: 1px solid rgba(212, 175, 55, 0.2);
+      border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+      padding: 35px 20px;
+      margin-top: 20px;
+    }
+    .trust-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 40px;
+      max-width: 1100px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .trust-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      font-weight: 500;
+    }
+    .trust-item i {
+      font-size: 2rem;
+      color: #d4af37;
+    }
+    .trust-item span {
+      font-size: 0.9rem;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 30px 20px;
+      font-size: 0.8rem;
+      opacity: 0.6;
+    }
+
+    /* ---------- МОДАЛЬНОЕ ОКНО ДЛЯ УВЕЛИЧЕНИЯ ФОТО ---------- */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.92);
+      backdrop-filter: blur(8px);
+      z-index: 2000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+    .modal-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+    .modal-container {
+      position: relative;
+      max-width: 90vw;
+      max-height: 90vh;
+      background: transparent;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 25px 50px -12px rgba(0,0,0,0.8);
+      cursor: default;
+      animation: modalZoomIn 0.25s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+    }
+    @keyframes modalZoomIn {
+      from {
+        transform: scale(0.92);
+        opacity: 0;
+      }
+      to {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+    .modal-container img {
+      display: block;
+      width: auto;
+      height: auto;
+      max-width: 100%;
+      max-height: 85vh;
+      object-fit: contain;
+      background: #0a0a0a;
+      border-radius: 20px;
+      border: 1px solid rgba(212, 175, 55, 0.4);
+    }
+    .modal-close {
+      position: absolute;
+      top: 16px;
+      right: 20px;
+      background: rgba(0,0,0,0.65);
+      border: 1px solid rgba(212, 175, 55, 0.6);
+      border-radius: 50%;
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #d4af37;
+      font-size: 1.8rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      z-index: 2001;
+      backdrop-filter: blur(4px);
+    }
+    .modal-close:hover {
+      background: #d4af37;
+      color: #0a0a0a;
+      transform: scale(1.05);
+      border-color: #fff;
+    }
+
+    @media (max-width: 640px) {
+      .catalog {
+        padding: 20px 16px 40px;
+        gap: 20px;
+      }
+      .filter-bar {
+        gap: 8px;
+        margin: 24px 12px 12px;
+      }
+      .filter-btn {
+        padding: 6px 16px;
+        font-size: 0.8rem;
+      }
+      .search-sort-row {
+        margin: 8px 12px 20px;
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .sort-btn {
+        justify-content: center;
+        width: auto;
+        margin: 0 auto;
+      }
+      .card-img {
+        height: 180px;
+      }
+      .hero {
+        padding: 40px 16px 35px;
+      }
+      .price, .price1, .price2 {
+        font-size: 1rem;
+      }
+      .modal-close {
+        width: 38px;
+        height: 38px;
+        font-size: 1.5rem;
+        top: 12px;
+        right: 12px;
+      }
+    }
+
+    @media (min-width: 1200px) {
+      .catalog {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    .card-wrapper {
+      transition: opacity 0.25s ease, transform 0.2s ease;
+    }
+  </style>
+</head>
+<body>
+    
+      <div class="phone">
+            📞 <a href="tel:+79991979994" style="color:white; text-decoration:none;">
+            +7(999)197-99-94
+            </a>
+        </div>
+
+<div class="hero">
+  <h1>PERFUME</h1>
+  <p>Нишевые ароматы класса люкс • Стойкость до 24 часов</p>
+  <a href="tel:+79991979994" class="cta">
+    <i class="fa fa-phone"></i> +7 (999) 197 - 99 - 94
+  </a>
+  
+</div>
+
+<div class="filter-bar">
+  <button class="filter-btn active" data-filter="all"><i class="fas fa-layer-group"></i> Все</button>
+  <button class="filter-btn" data-filter="men"><i class="fas fa-mars"></i> Мужские</button>
+  <button class="filter-btn" data-filter="women"><i class="fas fa-venus"></i> Женские</button>
+  <button class="filter-btn" data-filter="unisex"><i class="fas fa-genderless"></i> Унисекс</button>
+</div>
+
+<div class="search-sort-row">
+  <div class="search-wrapper">
+    <div class="search-box">
+      <i class="fas fa-search"></i>
+      <input type="text" id="searchInput" placeholder="Поиск аромата по названию, описанию или тегу...">
+      <button class="search-clear" id="clearSearchBtn" aria-label="Очистить"><i class="fas fa-times-circle"></i></button>
+    </div>
+  </div>
+  <button class="sort-btn" id="sortByNameBtn">
+    <i class="fas fa-sort-alpha-down"></i> Сортировка: А–Я
+  </button>
+</div>
+
+<div class="catalog" id="catalogContainer">
+  <!-- Карточки генерируются через JS -->
+</div>
+
+<div class="trust-section">
+  <div class="trust-container">
+    <div class="trust-item"><i class="fas fa-star"></i><span>Идёшь в «Золотое Яблоко», выбираешь аромат, отправляешь нам — и получаешь до 98% схожести с оригиналом без переплат.</span></div>
+  </div>
+</div>
+
+<div class="footer">
+  <p>PERFUME — роскошь, которая остаётся с вами. <br>© 2026 Все права защищены</p>
+</div>
+
+<!-- МОДАЛЬНОЕ ОКНО ДЛЯ УВЕЛИЧЕНИЯ ФОТО -->
+<div id="imageModal" class="modal-overlay">
+  <div class="modal-container">
+    <span class="modal-close" id="modalCloseBtn"><i class="fas fa-times"></i></span>
+    <img id="modalImage" src="" alt="Увеличенное фото аромата">
+  </div>
+</div>
+
+<script>
+    
+    // ---------- КАТАЛОГ ПАРФЮМА ----------
+    const perfumesRaw = [
+      { id: 1, name: "Carolina Herrera 212 VIP Black", tag: "Сладкий • Мужской", desc: "Carolina Herrera 212 VIP Black Eau de Parfum — дерзкий и соблазнительный аромат с нотами абсента, лаванды, ванили и мускуса. Создан для уверенных мужчин, которые любят быть в центре внимания.", price: "800 руб.", volume: "10 мл", price1: "3500 руб.", volume1: "50 мл", type: "men", img: "img_katalog/Carolina Herrera.webp", waMsg: "Хочу Carolina Herrera 212 VIP Black" },
+      { id: 2, name: "Sauvage", tag: "Свежий • Пряный", desc: "Dior Sauvage Eau de Parfum — свежий и мужественный аромат с нотами бергамота, пряного перца и тёплой амбры. Подчёркивает уверенность, стиль и харизму мужчины.", price: "800 руб.", volume: "10 мл", price1: "3500 руб.", volume1: "50 мл", type: "men", img: "img_katalog/Sauvage1.webp", waMsg: "Хочу Sauvage" },
+      { id: 3, name: "Crown Collection - Matsukita", tag: "Свежий • Унисекс", desc: "Clive Christian Crown Collection Matsukita — изысканный нишевый аромат с нотами бергамота, розового перца, жасмина и дымного мате. Тёплый древесно-амбровый шлейф подчёркивает статус, элегантность и загадочность.", price: "800 руб.", volume: "10 мл", price1: "3500 руб.", volume1: "50 мл", type: "unisex", img: "img_katalog/Crown Collection - Matsukita1.webp", waMsg: "Хочу Crown Collection - Matsukita" },
+      { id: 4, name: "GUCCI Guilty Pour Homme", tag: "Тёплый • Шлейф", desc: "Gucci Guilty Pour Homme Eau de Toilette — современный, уверенный аромат с сочетанием лаванды, цитруса и цветка апельсина. В базе звучат кедр и пачули, создавая тёплый, мужественный и слегка соблазнительный шлейф.", price: "800 руб.", volume: "10 мл", price1: "3500 руб.", volume1: "50 мл", type: "men", img: "img_katalog/GUCCI Guilty Pour Homme1.webp", waMsg: "Хочу GUCCI Guilty Pour Homme" },
+      { id: 5, name: "Ajmal Amber Wood", tag: "Тёплый • Восточный", desc: "Ajmal Amber Wood — роскошный древесно-амбровый аромат с нотами специй, кардамона, лаванды, амбры и благородного дерева. Обладает насыщенным, дорогим и очень стойким шлейфом, подчёркивая статус и уверенность.", price: "800 руб.", volume: "10 мл", price1: "3500 руб.", volume1: "50 мл", type: "unisex", img: "img_katalog/AJMAL AMBER WOOD.webp", waMsg: "Хочу Ajmal Amber Wood" },
+      { id: 6, name: "Memo African Leather", tag: "Шлейф • Стойкий", desc: "Memo Paris African Leather — яркий кожано-пряный аромат с нотами кардамона, шафрана, ветивера и кожи. Обладает мощным, дорогим и очень стойким шлейфом, создавая эффект уверенности и роскоши.", price: "800 руб.", volume: "10 мл", price1: "3500 руб.", volume1: "50 мл", type: "unisex", img: "img_katalog/Memo African Leather1.webp", waMsg: "Хочу Memo African Leather" },
+      { id: 7, name: "Jo Malone Wood Sage & Sea Salt", tag: "Легкий • Средний", desc: "Jo Malone London Wood Sage & Sea Salt — свежий и воздушный аромат с морской солью, шалфеем и мягкими древесными нотами. Передаёт атмосферу морского побережья, лёгкости и чистоты.", price: "800 руб.", volume: "10 мл", price1: "3500 руб.", volume1: "50 мл", type: "unisex", img: "img_katalog/Jo Malone Wood Sage & Sea Salt.webp", waMsg: "Хочу Jo Malone Wood Sage & Sea Salt" },
+      { id: 8, name: "Kilian Black Phantom", tag: "Сладкий • Сильный", desc: "Kilian Paris Black Phantom — насыщенный гурманский аромат с нотами рома, кофе, тёмного шоколада и карамели. Глубокий сладко-древесный шлейф создаёт атмосферу роскоши, загадочности и вечернего соблазна.", price: "800 руб.", volume: "10 мл", price1: "3500 руб.", volume1: "50 мл", type: "unisex", img: "img_katalog/Kilian Black Phantom1.webp", waMsg: "Хочу Kilian Black Phantom" },
+      { id: 9, name: "Chanel Egoiste Platinum", tag: "Стойкость • Свежий", desc: "Chanel Egoiste Platinum — свежий и элегантный аромат с нотами лаванды, розмарина, герани и древесного кедра. Звучит чисто, дорого и по-мужски уверенно, идеально для повседневного стиля.", price: "800 руб.", volume: "10 мл", price1: "3500 руб.", volume1: "50 мл", type: "men", img: "img_katalog/Chanel Egoiste Platinum1.webp", waMsg: "Хочу Chanel Egoiste Platinum" },
+      { id: 10, name: "Dolce & Gabbana The Only One", tag: "Сладкий • Сильный", desc: "Dolce & Gabbana The Only One — женственный и чувственный аромат с нотами фиалки, кофе, карамели и ванили. Окутывает тёплым сладким шлейфом, подчёркивая элегантность и притягательность.", price: "800 руб.", volume: "10 мл", price1: "3500 руб.", volume1: "50 мл", type: "women", img: "img_katalog/Dolce & Gabbana The Only One.webp", waMsg: "Хочу Dolce & Gabbana The Only One" },
+      { id: 11, name: "Flora Gorgeous Orchid Gucci", tag: "Сладкий • Легкий", desc: "Gucci Flora Gorgeous Orchid — нежный цветочно-ванильный аромат с нотами орхидеи, ванили и сладких фруктовых аккордов. Звучит мягко, женственно и современно, создавая лёгкий роскошный шлейф.", price: "800 руб.", volume: "10 мл", price1: "3500 руб.", volume1: "50 мл", type: "women", img: "img_katalog/Flora Gorgeous Orchid Gucci.webp", waMsg: "Хочу Flora Gorgeous Orchid Gucci" },
+      { id: 12, name: "Louis Vuitton Imagination", tag: "Средний • Сильный", desc: "Louis Vuitton Imagination — свежий цитрусово-чайный аромат с нотами бергамота, чёрного чая, имбиря и амброксана. Звучит чисто, дорого и современно, создавая эффект уверенного и ухоженного мужчины.", price: "800 руб.", volume: "10 мл", price1: "3500 руб.", volume1: "50 мл", type: "men", img: "img_katalog/Louis Vuitton Imagination1.webp", waMsg: "Хочу Louis Vuitton Imagination" },
+      { id: 13, name: "Louis Vuitton L'Immensite", tag: "Средний • Сильный", desc: "Louis Vuitton L'Immensite — свежий цитрусово-амбровый аромат с нотами грейпфрута, имбиря, лабданума и амброксана. Звучит чисто, энергично и очень дорого, подчёркивая уверенность и современный стиль.", price: "800 руб.", volume: "10 мл", price1: "3500 руб.", volume1: "50 мл", type: "men", img: "img_katalog/Louis Vuitton L'Immensite1.webp", waMsg: "Хочу Louis Vuitton L'Immensite" },
+      { id: 14, name: "Louis Vuitton Ombre Nomade", tag: "Шлейф • Сильный", desc: "Louis Vuitton Ombre Nomade — глубокий восточно-древесный аромат с нотами уда, розы, ладана и малины. Обладает роскошным тёмным звучанием и мощным шлейфом, создавая эффект статуса и загадочности.", price: "800 руб.", volume: "10 мл", price1: "3500 руб.", volume1: "50 мл", type: "unisex", img: "img_katalog/Louis Vuitton Ombre Nomade1.webp", waMsg: "Хочу Louis Vuitton Ombre Nomade" },
+      { id: 15, name: "Baccarat Rouge 540", tag: "Шлейф • Сильный", desc: "Maison Francis Kurkdjian Baccarat Rouge 540 — культовый сладко-амбровый аромат с нотами шафрана, жасмина, амбры и древесных аккордов. Звучит дорого, воздушно и очень узнаваемо, оставляя роскошный кристальный шлейф.", price: "800 руб.", volume: "10 мл", price1: "3500 руб.", volume1: "50 мл", type: "unisex", img: "img_katalog/Baccarat Rouge 540.webp", waMsg: "Хочу Baccarat Rouge 540" },
+      { id: 16, name: "Hormone Paris This Is Not GABA", tag: "Шлейф • Средний", desc: "Borntostandout This Is Not A Blue Bottle / GABA — необычный нишевый аромат с мягкими мускусными, кремовыми и молекулярными аккордами. Звучит чисто, уютно и современно, создавая эффект «дорогой кожи» и притягательной ауры.", price: "800 руб.", volume: "10 мл", price1: "3500 руб.", volume1: "50 мл", type: "unisex", img: "img_katalog/Hormone Paris This Is Not GABA1.webp", waMsg: "Хочу Hormone Paris This Is Not GABA" },
+      { id: 17, name: "Louis Vuitton Symphony", tag: "Шлейф • Средний", desc: "Louis Vuitton Symphony — яркий цитрусовый аромат с нотами бергамота, имбиря и грейпфрута. Звучит ультра-свежо, чисто и дорого, создавая ощущение роскоши и лёгкости.", price: "800 руб.", volume: "10 мл", price1: "3500 руб.", volume1: "50 мл", type: "unisex", img: "img_katalog/Louis Vuitton Symphony1.webp", waMsg: "Хочу Louis Vuitton Symphony" },
+      { id: 18, name: "Clive Christian Jump Up And Kiss Me", tag: "Шлейф • Сильный", desc: "Clive Christian Jump Up And Kiss Me Hedonistic — роскошный восточно-древесный аромат с нотами вишни, табака, амбры и кожи. Звучит густо, дорого и соблазнительно, оставляя насыщенный нишевый шлейф.", price: "800 руб.", volume: "10 мл", price1: "3500 руб.", volume1: "50 мл", type: "unisex", img: "img_katalog/Clive Christian Jump Up And Kiss Me.webp", waMsg: "Хочу Clive Christian Jump Up And Kiss Me" },
+      { id: 19, name: "Marc-Antoine Barrois Ganymede", tag: "Шлейф • Сильный", desc: "Marc-Antoine Barrois Ganymede — современный минерально-древесный аромат с нотами бессмертника, шафрана, мандарина и кожи. Звучит необычно: сухо, металлично и элегантно, с ощущением «космической чистоты».", price: "800 руб.", volume: "10 мл", price1: "3500 руб.", volume1: "50 мл", type: "unisex", img: "img_katalog/Marc-Antoine Barrois Ganymede1.webp", waMsg: "Хочу Marc-Antoine Barrois Ganymede" },
+      { id: 20, name: "Xerjoff Casamorati 1888 La Tosca", tag: "Шлейф • Cредний–сильный", desc: "Xerjoff Casamorati La Tosca — элегантный цветочно-фруктовый аромат с нотами итальянского лимона, зелёного мандарина, фиалки и ванили. Звучит утончённо, дорого и женственно, оставляя мягкий бархатный шлейф.", price: "800 руб.", volume: "10 мл", price1: "3500 руб.", volume1: "50 мл", type: "women", img: "img_katalog/Xerjoff Casamorati 1888 La Tosca.webp", waMsg: "Хочу Xerjoff Casamorati 1888 La Tosca" },
+      { id: 21, name: "Amouage Guidance 46", tag: "Шлейф • Cильный", desc: "Amouage Guidance 46 — насыщенный цветочно-амбровый аромат с нотами груши, розы, жасмина самбак, сандала и ладана. Звучит глубоко, сливочно и роскошно, создавая дорогой и гипнотический шлейф.", price: "800 руб.", volume: "10 мл", price1: "3500 руб.", volume1: "50 мл", type: "unisex", img: "img_katalog/Amouage Guidance 46.webp", waMsg: "Хочу Amouage Guidance 46" },
+      { id: 22, name: "Creed Aventus", tag: "Шлейф • Cредний–сильный", desc: "Creed Aventus — легендарный свежо-древесный аромат с нотами ананаса, бергамота, чёрной смородины и дымного дерева. Звучит уверенно, дорого и харизматично, подчёркивая статус и лидерский характер.", price: "800 руб.", volume: "10 мл", price1: "3500 руб.", volume1: "50 мл", type: "men", img: "img_katalog/Creed Aventus.webp", waMsg: "Хочу Creed Aventus" },
+      { id: 23, name: "Mojave Ghost Absolu De Parfum", tag: "Шлейф • Cредний–сильный", desc: "Byredo Mojave Ghost Absolu de Parfum — насыщенная и более глубокая версия культового Mojave Ghost с нотами амбретты, груши, фиалки, магнолии и тёплого мускуса. Звучит чисто, кремово и очень дорого, создавая мягкий, но заметный люксовый шлейф.", price: "800 руб.", volume: "10 мл", price1: "3500 руб.", volume1: "50 мл", type: "unisex", img: "img_katalog/Mojave Ghost Absolu De Parfum1.webp", waMsg: "Хочу Mojave Ghost Absolu De Parfum" },
+      { id: 24, name: "Byredo Blanche Absolu de Parfum", tag: "Шлейф • Cредний", desc: "Byredo Blanche Absolu de Parfum — чистый и элегантный аромат с нотами альдегидов, белой розы, мускуса и сандала. Звучит как «свежевыстиранная белая рубашка» — мягко, дорого и очень утончённо. Версия Absolu стала более насыщенной, кремовой и стойкой.", price: "800 руб.", volume: "10 мл", price1: "3500 руб.", volume1: "50 мл", type: "unisex", img: "img_katalog/Byredo Blanche Absolu de Parfum.webp", waMsg: "Хочу Byredo Blanche Absolu de Parfum" },
+      { id: 25, name: "DOLCE & GABBANA D&G Anthology 3 L'IMPERATRICE LIMITED EDITION", tag: "Шлейф • Cредний", desc: "Dolce & Gabbana D&G Anthology 3 L'Imperatrice Limited Edition — яркий фруктово-цветочный аромат с нотами киви, арбуза, розового перца и мускуса. Звучит свежо, сочно и женственно, создавая лёгкий летний вайб и притягательный шлейф.", price: "800 руб.", volume: "10 мл", price1: "3500 руб.", volume1: "50 мл", type: "women", img: "img_katalog/DOLCE & GABBANA D&G Anthology 3 L'IMPERATRICE LIMITED EDITION.webp", waMsg: "Хочу DOLCE & GABBANA D&G Anthology 3 L'IMPERATRICE LIMITED EDITION" },
+      { id: 26, name: "Giorgio Armani Acqua di Gioia", tag: "Шлейф • Лёгкий–Средний", desc: "Giorgio Armani Acqua di Gioia — свежий акватически-цитрусовый аромат с нотами лимона, мяты, жасмина и кедра. Звучит чисто, легко и женственно, напоминая морской бриз и летнюю свежесть.", price: "800 руб.", volume: "10 мл", price1: "3500 руб.", volume1: "50 мл", type: "women", img: "img_katalog/Giorgio Armani Acqua di Gioia.webp", waMsg: "Хочу Giorgio Armani Acqua di Gioia" },
+      { id: 27, name: "Bvlgari Tygar", tag: "Шлейф • Сильный", desc: "Bvlgari Tygar — яркий цитрусово-древесный аромат с мощным сочетанием грейпфрута, амброксана и тёплых древесных нот. Звучит ультра-свежо, дорого и очень современно, создавая эффект чистоты и статуса.", price: "800 руб.", volume: "10 мл", price1: "3500 руб.", volume1: "50 мл", type: "men", img: "img_katalog/Bvlgari Tygar.webp", waMsg: "Хочу Bvlgari Tygar" },
+      { id: 28, name: "MONTALE Arabians Tonka", tag: "Шлейф • Сильный", desc: "Montale Arabians Tonka — насыщенный восточно-сладкий аромат с нотами уда, розы, шафрана, тонка-бобов и амбры. Звучит громко, дорого и очень притягательно, оставляя густой роскошный шлейф.", price: "800 руб.", volume: "10 мл", price1: "3500 руб.", volume1: "50 мл", type: "unisex", img: "img_katalog/MONTALE Arabians Tonka1.webp", waMsg: "Хочу MONTALE Arabians Tonka" },
+      { id: 29, name: "Sauvage Elixir", tag: "Шлейф • Сильный", desc: "Dior Sauvage Elixir — ультра-насыщенный пряно-древесный аромат с нотами корицы, мускатного ореха, лаванды и тёплых древесных аккордов. Звучит мощно, дорого и очень харизматично, оставляя густой роскошный шлейф.", price: "800 руб.", volume: "10 мл", price1: "3500 руб.", volume1: "50 мл", type: "men", img: "img_katalog/Sauvage Elixir.webp", waMsg: "Хочу Sauvage Elixir" },
+      { id: 30, name: "BYREDO Vanille Antique", tag: "Шлейф • Cредний–сильный", desc: "Byredo Vanille Antique — глубокий нишевый ванильно-амбровый аромат с нотами фрезии, сливы, амбры, кашемирового дерева и мадагаскарской ванили. Звучит не как «сладкая ваниль», а как тёплая, густая и дорогая ваниль с древесно-дымным оттенком.", price: "800 руб.", volume: "10 мл", price1: "3500 руб.", volume1: "50 мл", type: "unisex", img: "img_katalog/BYREDO Vanille Antique.webp", waMsg: "Хочу BYREDO Vanille Antique" },
+      { id: 31, name: "Amouage Guidance", tag: "Шлейф • Cильный", desc: "Amouage Guidance — один из самых популярных нишевых ароматов последних лет. Сочетает грушу, ладан, шафран, жасмин самбак, сандал и ваниль, создавая густое, сливочно-пряное и очень дорогое звучание.", price: "800 руб.", volume: "10 мл", price1: "3500 руб.", volume1: "50 мл", type: "unisex", img: "img_katalog/Amouage Guidance1.webp", waMsg: "Хочу Amouage Guidance" },
+      { id: 32, name: "Tiziana Terenzi Orion", tag: "Шлейф • Средний-Cильный", desc: "Tiziana Terenzi Orion — насыщенный фруктово-древесный аромат с нотами ананаса, яблока, бергамота, дыма, уда и мускуса. Часто сравнивается с Aventus, но Orion звучит более дымно, сладко и нишево.", price: "800 руб.", volume: "10 мл", price1: "3500 руб.", volume1: "50 мл", type: "unisex", img: "img_katalog/Tiziana Terenzi Orion.webp", waMsg: "Хочу Tiziana Terenzi Orion" },
+      { id: 33, name: "Chanel Allure Homme Sport", tag: "Шлейф • Средний", desc: "Chanel Allure Homme Sport — свежий цитрусово-древесный аромат с нотами апельсина, морских аккордов, нероли и бобов тонка. Звучит чисто, энергично и дорого, идеально сочетая спортивную свежесть и элегантность.", price: "800 руб.", volume: "10 мл", price1: "3500 руб.", volume1: "50 мл", type: "men", img: "img_katalog/Chanel Allure Homme Sport.webp", waMsg: "Хочу Chanel Allure Homme Sport" },
+      { id: 34, name: "Amouage Lustre", tag: "Шлейф • Средний-Cильный", desc: "Amouage Lustre — глубокий древесно-амбровый аромат с нотами кардамона, ириса, сандала, мирры и ванили. Звучит кремово, тепло и очень элегантно, создавая атмосферу «тихой роскоши» и дорогого нишевого звучания.", price: "800 руб.", volume: "10 мл", price1: "3500 руб.", volume1: "50 мл", type: "unisex", img: "img_katalog/Amouage Lustre1.webp", waMsg: "Хочу Amouage Lustre" },
+      { id: 35, name: "Maison Francis Kurkdjian Baccarat Rouge 540", tag: "Шлейф • Cильный", desc: "Maison Francis Kurkdjian Baccarat Rouge 540 — легендарный сладко-амбровый аромат с нотами шафрана, жасмина, амброксана и кедра. Звучит воздушно, дорого и очень узнаваемо, создавая эффект «люксового облака» вокруг человека.", price: "800 руб.", volume: "10 мл", price1: "3500 руб.", volume1: "50 мл", type: "unisex", img: "img_katalog/Maison Francis Kurkdjian Baccarat Rouge 540.webp", waMsg: "Хочу Maison Francis Kurkdjian Baccarat Rouge 540" },
+      { id: 36, name: "Essential Parfums Bois Imperial", tag: "Шлейф • Средний-Cильный", desc: "Essential Parfums Bois Impérial — стильный древесно-ароматический аромат с нотами базилика, ветивера, Akigalawood и амброксана. Звучит свежо, минерально и очень современно, создавая эффект «дорогой чистоты» и нишевого люкса.", price: "800 руб.", volume: "10 мл", price1: "3500 руб.", volume1: "50 мл", type: "unisex", img: "img_katalog/Essential Parfums Bois Imperial1.webp", waMsg: "Хочу Essential Parfums Bois Imperial" },
+      { id: 37, name: "Paco Rabanne Invictus", tag: "Шлейф • Средний-Cильный", desc: "Rabanne Invictus — культовый свежо-древесный аромат с нотами грейпфрута, морских аккордов, лавра и амброксана. Звучит ярко, энергично и очень комплиментарно, создавая образ уверенного мужчины-победителя.", price: "800 руб.", volume: "10 мл", price1: "3500 руб.", volume1: "50 мл", type: "men", img: "img_katalog/Paco Rabanne Invictus1.webp", waMsg: "Хочу Paco Rabanne Invictus" },
+      { id: 38, name: "Ex Nihilo Fleur Narcotique", tag: "Шлейф • Средний", desc: "Ex Nihilo Fleur Narcotique — изысканный цветочно-фруктовый аромат с нотами личи, бергамота, пиона, жасмина и мускуса. Звучит чисто, воздушно и очень дорого, создавая эффект «аромата чистой роскоши.", price: "800 руб.", volume: "10 мл", price1: "3500 руб.", volume1: "50 мл", type: "unisex", img: "img_katalog/Ex Nihilo Fleur Narcotique1.webp", waMsg: "Хочу Ex Nihilo Fleur Narcotique" },
+      { id: 39, name: "Amouage Interlude Black Iris Man", tag: "Шлейф • Сильный", desc: "Amouage Interlude Black Iris Man — глубокий дымно-древесный аромат с нотами ладана, ириса, кожи, амбры и сандала. Звучит густо, роскошно и очень статусно, сочетая фирменную мощь Interlude с более мягким и элегантным ирисовым оттенком.", price: "800 руб.", volume: "10 мл", price1: "3500 руб.", volume1: "50 мл", type: "men", img: "img_katalog/Amouage Interlude Black Iris Man.webp", waMsg: "Хочу Amouage Interlude Black Iris Man" },
+      { id: 40, name: "Miss Dior, Eau De Parfum", tag: "Шлейф • Средний", desc: "Dior Miss Dior Eau de Parfum — элегантный цветочный аромат с нотами розы, пиона, ириса и ванили. Звучит нежно, женственно и очень утончённо, создавая романтичный и дорогой шлейф.", price: "800 руб.", volume: "10 мл", price1: "3500 руб.", volume1: "50 мл", type: "women", img: "img_katalog/Miss Dior, Eau De Parfum1.webp", waMsg: "Хочу Miss Dior, Eau De Parfum" },
+      { id: 41, name: "Givenchy Irresistible Fraiche", tag: "Шлейф • Средний", desc: "Givenchy Irresistible Eau de Toilette Fraiche — свежий цветочно-розовый аромат с нотами апельсина, розовой воды, ириса и мускуса. Звучит легко, сияюще и очень женственно, создавая ощущение чистоты и весенней свежести.", price: "800 руб.", volume: "10 мл", price1: "3500 руб.", volume1: "50 мл", type: "women", img: "img_katalog/Givenchy Irresistible Fraiche1.webp", waMsg: "Хочу Givenchy Irresistible Fraiche" },
+      { id: 42, name: "Antonio Banderas, Blue Seduction For Men", tag: "Шлейф • Легкий-Средний", desc: "Antonio Banderas Blue Seduction For Men — свежий акватически-фруктовый аромат с нотами бергамота, дыни, мяты и древесных аккордов. Звучит легко, чисто и приятно, идеально подходя для повседневной носки и тёплой погоды.", price: "800 руб.", volume: "10 мл", price1: "3500 руб.", volume1: "50 мл", type: "men", img: "img_katalog/Antonio Banderas, Blue Seduction For Men.webp", waMsg: "Хочу Antonio Banderas, Blue Seduction For Men" },
+      { id: 43, name: "Initio Parfums Prives", tag: "Шлейф • Сильный", desc: "Initio Parfums Privés — нишевый парфюмерный дом, известный своими мощными, чувственными и очень стойкими ароматами. Бренд сочетает восточные, древесные, мускусные и гурманские аккорды, делая акцент на «магнетизме» и эмоциональном воздействии парфюма.", price: "800 руб.", volume: "10 мл", price1: "3500 руб.", volume1: "50 мл", type: "unisex", img: "img_katalog/Initio Parfums Prives.webp", waMsg: "Хочу Initio Parfums Prives" },
+      { id: 44, name: "Roja Parfums Elysium Pour Homme COLOGNE", tag: "Шлейф • Легкий", desc: "Roja Parfums Elysium Pour Homme Cologne — свежий, элегантный и харизматичный мужской аромат с яркими цитрусовыми нотами, сочетающий грейпфрут, бергамот и лайм с древесно-мускусной базой.", price: "800 руб.", volume: "10 мл", price1: "3500 руб.", volume1: "50 мл", type: "men", img: "img_katalog/Roja Parfums Elysium Pour Homme COLOGNE.webp", waMsg: "Хочу Roja Parfums Elysium Pour Homme COLOGNE" },
+      { id: 45, name: "Ex Nihilo Blue Talisman", tag: "Шлейф • Воздушный", desc: "Ex Nihilo Blue Talisman — свежий и роскошный аромат с яркими цитрусами, грушей, белыми цветами и мягкими мускусно-древесными нотами.", price: "800 руб.", volume: "10 мл", price1: "3500 руб.", volume1: "50 мл", type: "unisex", img: "img_katalog/Ex Nihilo Blue Talisman.webp", waMsg: "Хочу Ex Nihilo Blue Talisman" },
+      { id: 46, name: "Yves Saint Laurent Supreme Bouquet", tag: "Шлейф • Сильный", desc: "Yves Saint Laurent Supreme Bouquet — насыщенный восточно-цветочный аромат с нотами туберозы, иланг-иланга, амбры и пачули.", price: "800 руб.", volume: "10 мл", price1: "3500 руб.", volume1: "50 мл", type: "men", img: "img_katalog/Yves Saint Laurent Supreme Bouquet.webp", waMsg: "Хочу Yves Saint Laurent Supreme Bouquet" },
+      { id: 47, name: "Parfums de Marly Layton", tag: "Шлейф • Густой-Сладкий", desc: "Parfums de Marly Layton — насыщенный и элегантный аромат с сочетанием яблока, ванили, специй и древесных нот.", price: "800 руб.", volume: "10 мл", price1: "3500 руб.", volume1: "50 мл", type: "men", img: "img_katalog/Parfums de Marly Layton.webp", waMsg: "Хочу Parfums de Marly Layton" },
+      { id: 48, name: "Yves Saint Laurent Black Opium", tag: "Шлейф • Теплый-Сладкий", desc: "Yves Saint Laurent Black Opium — чувственный и яркий аромат с нотами кофе, ванили, белых цветов и сладких фруктовых аккордов.", price: "800 руб.", volume: "10 мл", price1: "3500 руб.", volume1: "50 мл", type: "women", img: "img_katalog/Yves Saint Laurent Black Opium.webp", waMsg: "Хочу Yves Saint Laurent Black Opium" },
+      { id: 49, name: "Haute Fragrance Company", tag: "Шлейф • Легкий", desc: "Haute Fragrance Company — Композиции бренда сочетают французскую элегантность, насыщенные фруктово-цветочные аккорды, ваниль, мускус и древесные ноты.", price: "800 руб.", volume: "10 мл", price1: "3500 руб.", volume1: "50 мл", type: "women", img: "img_katalog/Haute Fragrance Company.webp", waMsg: "Хочу Haute Fragrance Company" },
+      { id: 50, name: "Kilian Good Girl Gone Bad", tag: "Шлейф • Мягкий", desc: "Kilian Good Girl Gone Bad — роскошный цветочно-фруктовый аромат с нотами жасмина, туберозы, османтуса и мягкой сладости.", price: "800 руб.", volume: "10 мл", price1: "3500 руб.", volume1: "50 мл", type: "women", img: "img_katalog/Kilian Good Girl Gone Bad.webp", waMsg: "Хочу Kilian Good Girl Gone Bad" },
+      { id: 51, name: "RICHARD MAISON DE PARFUM WHITE CHOCOLA EXTRAIT", tag: "Шлейф • Сильный", desc: "Richard Maison de Parfum White Chocola Extrait — роскошный гурманский аромат с акцентом на белый шоколад, сливочные и ванильные ноты, дополненные мягкими древесными оттенками. Звучит насыщенно, сладко и очень уютно, создавая эффект дорогого десерта.", price: "800 руб.", volume: "10 мл", price1: "3500 руб.", volume1: "50 мл", type: "unisex", img: "img_katalog/RICHARD MAISON DE PARFUM WHITE CHOCOLA EXTRAIT.webp", waMsg: "Хочу RICHARD MAISON DE PARFUM WHITE CHOCOLA EXTRAIT" },
+      { id: 52, name: "GUERLAIN CHAMPS ELYSEES", tag: "Шлейф • Средний", desc: "Guerlain Champs-Élysées — элегантный цветочно-фруктовый аромат с нотами мимозы, розы, сирени, персика и миндаля. Звучит солнечно, утончённо и очень женственно, создавая атмосферу весеннего Парижа.", price: "800 руб.", volume: "10 мл", price1: "3500 руб.", volume1: "50 мл", type: "women", img: "img_katalog/GUERLAIN CHAMPS ELYSEES.webp", waMsg: "Хочу GUERLAIN CHAMPS ELYSEES" },
+      { id: 53, name: "GUCCI Flora Gentle Magnolia", tag: "Шлейф • Средний", desc: "Gucci Flora Gorgeous Magnolia — яркий цветочно-фруктовый аромат с нотами магнолии, ежевики, кокоса и пачули. Звучит нежно, солнечно и женственно, сочетая свежесть цветов со сладкой фруктовой мягкостью.", price: "800 руб.", volume: "10 мл", price1: "3500 руб.", volume1: "50 мл", type: "women", img: "img_katalog/GUCCI Flora Gentle Magnolia.webp", waMsg: "Хочу GUCCI Flora Gentle Magnolia" }
+    
+    ];
+    
+    const perfumes = perfumesRaw.map(p => ({ ...p, price2: "6000 руб.", volume2: "100 мл" }));
+    
+    function getGenderLabel(type) {
+      if (type === 'men') return 'МУЖСКИЕ';
+      if (type === 'women') return 'ЖЕНСКИЕ';
+      return 'УНИСЕКС';
+    }
+    
+    let currentFilter = 'all';
+    let searchQuery = '';
+    let sortByNameActive = false;
+    const container = document.getElementById('catalogContainer');
+    
+    function escapeHtml(str) {
+      if (!str) return '';
+      return str.replace(/[&<>]/g, function(m) {
+        if (m === '&') return '&amp;';
+        if (m === '<') return '&lt;';
+        if (m === '>') return '&gt;';
+        return m;
+      });
+    }
+    
+    function getFilteredAndSortedPerfumes() {
+      let filtered = currentFilter === 'all' ? [...perfumes] : perfumes.filter(p => p.type === currentFilter);
+      if (searchQuery.trim() !== '') {
+        const query = searchQuery.trim().toLowerCase();
+        filtered = filtered.filter(p =>
+          p.name.toLowerCase().includes(query) ||
+          p.tag.toLowerCase().includes(query) ||
+          p.desc.toLowerCase().includes(query)
+        );
+      }
+      if (sortByNameActive) {
+        filtered.sort((a, b) => a.name.localeCompare(b.name, 'ru', { sensitivity: 'base' }));
+      } else {
+        filtered.sort((a, b) => a.id - b.id);
+      }
+      return filtered;
+    }
+    
+    function renderCatalog() {
+      if (!container) return;
+      const filtered = getFilteredAndSortedPerfumes();
+      let html = '';
+      filtered.forEach(perf => {
+        const badgeHtml = perf.badge ? `<div class="badge">${perf.badge}</div>` : '';
+        // --- ИЗМЕНЕНО: ссылка на оплату вместо WhatsApp ---
+        const paymentUrl = `payment.html?id=${perf.id}`;   
+        html += `
+          <div class="card-wrapper" data-type="${perf.type}">
+            <div class="card">
+              <div class="card-img">
+                <img src="${perf.img}" alt="${escapeHtml(perf.name)}" loading="lazy">
+                ${badgeHtml}
+              </div>
+              <div class="card-body">
+                <div class="card-title">${escapeHtml(perf.name)}</div>
+                <div class="tag"><i class="fas fa-tag"></i> ${escapeHtml(perf.tag)}</div>
+                <div class="desc">${escapeHtml(perf.desc)}</div>
+                <div class="gender-type"><i class="fas ${perf.type === 'men' ? 'fa-mars' : (perf.type === 'women' ? 'fa-venus' : 'fa-genderless')}"></i> ${getGenderLabel(perf.type)}</div>
+                <div class="price">${perf.price} <small>/${perf.volume}</small></div>
+                <div class="price1">${perf.price1} <small>/${perf.volume1}</small></div>
+                <div class="price2">${perf.price2} <small>/${perf.volume2}</small></div>
+                
+                <!-- НОВАЯ КНОПКА ОПЛАТЫ -->
+                <a href="${paymentUrl}" class="buy-btn">
+                  <i class="fas fa-credit-card"></i> Оплатить
+                </a>
+              </div>
+            </div>
+          </div>
+        `;
+      });
+      if (filtered.length === 0) {
+        html = `<div style="grid-column:1/-1; text-align:center; padding:60px 20px;">
+                  <i class="fas fa-box-open" style="font-size:3rem; opacity:0.6;"></i>
+                  <p style="margin-top:15px;">Ничего не найдено по запросу «${escapeHtml(searchQuery)}» ✨</p>
+                  <p style="margin-top:8px; font-size:0.85rem; opacity:0.7;">Попробуйте изменить поиск или категорию</p>
+                </div>`;
+      }
+      container.style.opacity = '0.4';
+      container.style.transition = 'opacity 0.2s';
+      setTimeout(() => {
+        container.innerHTML = html;
+        container.style.opacity = '1';
+      }, 150);
+    }
+    
+    function updateActiveFilterButton() {
+      document.querySelectorAll('.filter-btn').forEach(btn => {
+        if (btn.dataset.filter === currentFilter) btn.classList.add('active');
+        else btn.classList.remove('active');
+      });
+    }
+    
+    function updateSortButtonUI() {
+      const sortBtn = document.getElementById('sortByNameBtn');
+      if (sortBtn) {
+        if (sortByNameActive) {
+          sortBtn.classList.add('active');
+          sortBtn.innerHTML = '<i class="fas fa-sort-alpha-down"></i> Сортировка: А–Я (вкл)';
+        } else {
+          sortBtn.classList.remove('active');
+          sortBtn.innerHTML = '<i class="fas fa-sort-alpha-down"></i> Сортировка: А–Я';
+        }
+      }
+    }
+    
+    function setFilter(filterValue) { currentFilter = filterValue; updateActiveFilterButton(); renderCatalog(); }
+    function setSearchQuery(query) { 
+      searchQuery = query; 
+      const searchInput = document.getElementById('searchInput');
+      if (searchInput && searchInput.value !== query) searchInput.value = query;
+      renderCatalog();
+    }
+    function toggleSortByName() { sortByNameActive = !sortByNameActive; updateSortButtonUI(); renderCatalog(); }
+    
+    // ---------- МОДАЛЬНОЕ ОКНО ДЛЯ УВЕЛИЧЕНИЯ ФОТО ----------
+    const modal = document.getElementById('imageModal');
+    const modalImg = document.getElementById('modalImage');
+    const closeModalBtn = document.getElementById('modalCloseBtn');
+    
+    function openModal(imageSrc) {
+      if (!modal || !modalImg) return;
+      modalImg.src = imageSrc;
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+    
+    function closeModal() {
+      if (!modal) return;
+      modal.classList.remove('active');
+      document.body.style.overflow = '';
+      setTimeout(() => { if (modalImg) modalImg.src = ''; }, 200);
+    }
+    
+    if (modal) {
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeModal();
+      });
+      if (closeModalBtn) closeModalBtn.addEventListener('click', closeModal);
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.classList.contains('active')) closeModal();
+      });
+    }
+    
+    // Делегирование событий для клика по изображениям
+    if (container) {
+      container.addEventListener('click', (e) => {
+        const targetImg = e.target.closest('.card-img img');
+        if (targetImg && targetImg.src) {
+          e.preventDefault();
+          openModal(targetImg.src);
+        }
+      });
+    }
+    
+    function init() {
+      renderCatalog();
+      document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.addEventListener('click', () => setFilter(btn.dataset.filter));
+      });
+      const searchInput = document.getElementById('searchInput');
+      if (searchInput) searchInput.addEventListener('input', (e) => setSearchQuery(e.target.value));
+      const clearBtn = document.getElementById('clearSearchBtn');
+      if (clearBtn) clearBtn.addEventListener('click', () => {
+        setSearchQuery('');
+        if (searchInput) searchInput.value = '';
+        searchInput?.focus();
+      });
+      const sortBtn = document.getElementById('sortByNameBtn');
+      if (sortBtn) { sortBtn.addEventListener('click', toggleSortByName); updateSortButtonUI(); }
+    }
+    
+    init();
+    window.addEventListener('load', () => { if(container) container.style.opacity = '1'; });
+</script>
+
+<script>
+function openApp(appUrl, webUrl) {
+  const timeout = setTimeout(() => { window.location.href = webUrl; }, 1200);
+  window.location.href = appUrl;
+  window.onblur = () => clearTimeout(timeout);
+}
+</script>
+
+</body>
+</html>
