@@ -1,0 +1,19 @@
+
+  <div class="cc-payment-form"></div>
+  <script defer src="https://cdn.trybit.com/widget/v1/widget.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      if (window.TryBitWidget) {
+        window.TryBitWidget.CreateInvoiceForm({
+          shop_id: "PVqdoM6rnNrTkEy0",
+          amount: 10,
+          buttonText: "Оплатить  ",
+          currency: "USD",
+          locale: "ru",
+          template: "dark",
+          emailRequired: true
+        }).mount('.cc-payment-form');
+      }
+    });
+  </script>
+  
